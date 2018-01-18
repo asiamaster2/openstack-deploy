@@ -1,0 +1,8 @@
+---
+- parted:
+    device: "{{ item }}"
+    number: 1
+    state: present
+    name: KOLLA_CEPH_OSD_BOOTSTRAP
+    label: gpt
+  with_items: "{{ ceph_osd_disks }}"

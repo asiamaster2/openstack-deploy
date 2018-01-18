@@ -1,0 +1,22 @@
+---
+- name: Create the folder of docker
+  file:
+    path: /etc/docker
+    state: directory
+    mode: 0700
+
+- name: Transfer file for docker.service
+  copy:
+     src: "{{ role_path }}/files/docker"
+     dest: /etc/default/docker
+
+- name: Transfer file for docker.service
+  copy:
+     src: "{{ role_path }}/files/docker.service"
+     dest: /etc/systemd/system/docker.service
+
+- name: Transfer file for daemon.json
+  copy:
+     src: "{{ role_path }}/files/daemon.json"
+     dest: /etc/docker/daemon.json
+

@@ -1,0 +1,9 @@
+maas_machine_id: wmpf7w
+
+ceph_osd_disks:
+ - /dev/sdb
+ - /dev/sdc
+ - /dev/sdd
+ - /dev/sde
+ - /dev/sdf
+ - /dev/sdg

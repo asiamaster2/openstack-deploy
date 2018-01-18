@@ -1,0 +1,162 @@
+openstack_auth_url: http://10.1.61.41:35357/v3
+username: admin
+password: GQnW935WuzJvXQldzci4bVclDiKBPll6tF7xXqLp
+project_name: admin
+
+maas_machine_id:
+ - id: wmpf7w
+ - id: 8crawh
+ - id: h6t3qd
+ - id: h8femx
+ - id: fey8tm
+ - id: sspy3m
+ - id: 6qeyfc
+ - id: ycgwqk
+ - id: cycwga
+ - id: agx8mf
+
+flavors:
+ - flavor_name: g.nano
+   ram_size: 512
+   swap_size: 128
+   disk_size: 15
+   vcpus_val: 1
+ - flavor_name: g.micro
+   ram_size: 1024
+   swap_size: 256
+   disk_size: 20
+   vcpus_val: 1
+ - flavor_name: g.small
+   ram_size: 2048
+   swap_size: 512
+   disk_size: 30
+   vcpus_val: 1
+ - flavor_name: g.medium
+   ram_size: 4096
+   swap_size: 1024
+   disk_size: 50
+   vcpus_val: 2
+ - flavor_name: g.large
+   ram_size: 8194
+   swap_size: 2048
+   disk_size: 100
+   vcpus_val: 2
+ - flavor_name: g.xlarge
+   ram_size: 16388
+   swap_size: 2048
+   disk_size: 100
+   vcpus_val: 4
+ - flavor_name: g.2xlarge
+   ram_size: 32776
+   swap_size: 2048
+   disk_size: 100
+   vcpus_val: 8
+ - flavor_name: c.nano
+   ram_size: 512
+   swap_size: 128
+   disk_size: 15
+   vcpus_val: 2
+ - flavor_name: c.micro
+   ram_size: 1024
+   swap_size: 256
+   disk_size: 20
+   vcpus_val: 2
+ - flavor_name: c.small
+   ram_size: 2048
+   swap_size: 512
+   disk_size: 30
+   vcpus_val: 2
+ - flavor_name: c.medium
+   ram_size: 4096
+   swap_size: 1024
+   disk_size: 50
+   vcpus_val: 4
+ - flavor_name: c.large
+   ram_size: 8194
+   swap_size: 2048
+   disk_size: 100
+   vcpus_val: 4
+ - flavor_name: c.xlarge
+   ram_size: 16388
+   swap_size: 2048
+   disk_size: 100
+   vcpus_val: 8
+ - flavor_name: c.2xlarge
+   ram_size: 32776
+   swap_size: 2048
+   disk_size: 100
+   vcpus_val: 16
+ - flavor_name: r.small
+   ram_size: 4096
+   swap_size: 1024
+   disk_size: 30
+   vcpus_val: 1
+ - flavor_name: r.medium
+   ram_size: 8194
+   swap_size: 2048
+   disk_size: 50
+   vcpus_val: 2
+ - flavor_name: r.large
+   ram_size: 16388
+   swap_size: 2048
+   disk_size: 100
+   vcpus_val: 2
+ - flavor_name: r.xlarge
+   ram_size: 32776
+   swap_size: 2048
+   disk_size: 100
+   vcpus_val: 4
+ - flavor_name: r.2xlarge
+   ram_size: 65552
+   swap_size: 2048
+   disk_size: 100
+   vcpus_val: 8
+ - flavor_name: d.small
+   ram_size: 2048
+   swap_size: 512
+   disk_size: 60
+   vcpus_val: 2
+ - flavor_name: d.medium
+   ram_size: 4096
+   swap_size: 1024
+   disk_size: 100
+   vcpus_val: 4
+ - flavor_name: d.large
+   ram_size: 8194
+   swap_size: 2048
+   disk_size: 200
+   vcpus_val: 8
+ - flavor_name: d.xlarge
+   ram_size: 16388
+   swap_size: 2048
+   disk_size: 200
+   vcpus_val: 16
+
+nic_info:
+ - network_name: Public
+   provider_physical_network: physnet1
+   provider_network_type: flat
+   shared: True
+   subnet_name: Public_Subnet
+   cidr: 100.100.100.32/27
+   dns_nameservers: 8.8.8.8
+   allocation_pool_start: 100.100.100.40
+   allocation_pool_end: 100.100.100.45
+   gateway_ip: 100.100.100.33
+ - network_name: Private
+   provider_physical_network: physnet2
+   provider_network_type: flat
+   shared: True
+   subnet_name: Private_Subnet
+   cidr: 10.1.81.0/24
+   dns_nameservers: 8.8.8.8
+   allocation_pool_start: 10.1.81.220
+   allocation_pool_end: 10.1.81.240    
+   gateway_ip: 10.1.81.1
+
+
+images_info:
+ - image_name : "Ubuntu_16.04"
+   container_format: bare
+   disk_format: qcow2
+   image_filename: /var/lib/docker/openstack-images-Aaron/ubuntu-16.04-server-cloudimg-amd64-disk1.img

@@ -1,0 +1,7 @@
+
+- name: kolla-ansible bootstrap
+  shell: cd /root/openstackdeploy && /usr/local/bin/kolla-ansible -i /root/openstackdeploy/inventory/region/hosts bootstrap-servers
+
+- name: kolla-ansible deploy
+  shell: cd /root/openstackdeploy && /usr/local/bin/kolla-ansible deploy -i /root/openstackdeploy/inventory/region/hosts
+

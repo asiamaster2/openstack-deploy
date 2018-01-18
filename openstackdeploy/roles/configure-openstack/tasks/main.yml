@@ -1,0 +1,67 @@
+- name: "Create the flavors"
+  os_nova_flavor:
+    auth:
+      auth_url: "{{ openstack_auth_url }}"
+      username: "{{ username }}"
+      password: "{{ password }}" 
+      project_name: "{{ project_name }}"
+#    cloud: mycloud
+    state: present
+    name: "{{ item.flavor_name }}"
+    ram: "{{ item.ram_size }}"
+    vcpus: "{{ item.vcpus_val }}"
+    disk: "{{ item.disk_size }}"
+    swap: "{{ item.swap_size }}"
+  with_items: 
+   - "{{ flavors }}"
+
+- name: "Create the private networks"
+  os_network:
+    auth:
+      auth_url: "{{ openstack_auth_url }}"
+      username: "{{ username }}"
+      password: "{{ password }}" 
+      project_name: "{{ project_name }}"
+    #cloud: mycloud
+    state: present
+    name: "{{ item.network_name }}"
+    shared: "{{ item.shared }}"
+    provider_physical_network: "{{ item.provider_physical_network }}"
+    provider_network_type: "{{ item.provider_network_type }}"
+    external: true
+  with_items:
+   - "{{ nic_info }}"
+  tags: networktest
+
+- os_subnet:
+    auth:
+      auth_url: "{{ openstack_auth_url }}"
+      username: "{{ username }}"
+      password: "{{ password }}" 
+      project_name: "{{ project_name }}"
+    state: present
+    network_name: "{{ item.network_name }}"
+    name: "{{ item.subnet_name }}"
+    cidr: "{{ item.cidr }}"
+    dns_nameservers: "{{ item.dns_nameservers }}"
+    allocation_pool_start: "{{ item.allocation_pool_start }}"
+    allocation_pool_end: "{{ item.allocation_pool_end }}"
+  with_items:
+   - "{{ nic_info }}"
+
+- os_image:
+    auth:
+      auth_url: "{{ openstack_auth_url }}"
+      username: "{{ username }}"
+      password: "{{ password }}" 
+      project_name: "{{ project_name }}"
+    name: "{{ item.image_name }}"
+    container_format: "{{ item.container_format }}"
+    disk_format: "{{ item.disk_format }}" 
+    state: present
+    filename: "{{ item.image_filename }}"
+  with_items:
+    - "{{ images_info }}"
+  tags:
+    - imagetest
+

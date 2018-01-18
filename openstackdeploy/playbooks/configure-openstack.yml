@@ -1,0 +1,10 @@
+---
+ - hosts: localhost
+   connection: local
+   gather_facts: false
+   user: root
+   roles:
+    - configure-openstack
+   tags:
+    - configure-openstack
+

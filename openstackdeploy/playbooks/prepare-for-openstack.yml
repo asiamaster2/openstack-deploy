@@ -1,0 +1,29 @@
+---
+ - hosts: localhost
+   connection: local
+   gather_facts: false
+   user: root
+   roles:
+    - maas
+   tags:
+    - maas
+
+ - hosts: 
+    - all:!localhost
+   gather_facts: false
+   roles:
+    - standard-libraries
+    - docker
+   pre_tasks:
+    - name: 'install python'
+      raw: sudo apt-get -y install python-dev libffi-dev
+   tags: 
+    - prepare-hosts
+
+ - hosts: storage
+   gather_facts: false
+   roles:
+    - ceph-disk-label 
+   tags: 
+    - prepare-hosts
+

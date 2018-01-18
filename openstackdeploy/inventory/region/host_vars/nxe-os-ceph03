@@ -1,0 +1,9 @@
+maas_machine_id: h6t3qd
+
+ceph_osd_disks:
+ - /dev/sdb
+ - /dev/sdc
+ - /dev/sdd
+ - /dev/sde                                                                                              
+ - /dev/sdf                                                                                              
+ - /dev/sdg

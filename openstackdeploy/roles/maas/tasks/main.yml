@@ -1,0 +1,32 @@
+---
+ - name: MAAS login
+   shell: maas login "{{ MAAS_PROFILE }}" "{{ MAAS_URL }}" - < "{{ MAAS_API_KEY_FILE }}"
+
+ - name: Release start - MAAS
+   shell: maas admin machine release "{{ item.id }}"
+   with_items: 
+    - "{{ maas_machine_id }}"
+
+ - name: Checking release - MAAS
+   shell: maas admin nodes read|grep \"status_name |grep Ready |wc -l
+   register: command_result  
+   until: command_result.stdout | int == maas_machine_id|length
+   retries: 10
+   delay: 10
+   ignore_errors: true
+
+ - name: Deploy start - MAAS
+   shell: maas admin machine deploy "{{ item.id }}"
+   with_items: 
+    - "{{ maas_machine_id }}"
+
+ - name: Checking deploy - MAAS
+   shell: maas admin nodes read|grep \"status_name |grep Deployed |wc -l
+   register: command_result  
+   until: command_result.stdout | int == maas_machine_id|length
+   retries: 60
+   delay: 60
+   ignore_errors: true
+
+ - name: reset known hosts
+   shell: echo "" > /root/.ssh/known_hosts && cd /root/nxeuansible/

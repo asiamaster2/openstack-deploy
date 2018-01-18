@@ -1,0 +1,3 @@
+MAAS_PROFILE: admin
+MAAS_API_KEY_FILE: /root/maaskeyfile
+MAAS_URL: http://10.1.61.101:5240/MAAS/api/2.0
